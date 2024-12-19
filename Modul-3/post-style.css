@@ -1,0 +1,44 @@
+.container {
+    display: flex;
+    border: 1px solid #000;
+    padding: 10px;
+    max-width: 600px;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+}
+
+.gambar {
+    flex: 1;
+    border: 1px solid #000;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 100px;
+    height: 150px;
+}
+
+.konten {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.judul {
+    border: 1px solid #000;
+    padding: 5px;
+}
+
+.potongan-artikel {
+    border: 1px solid #000;
+    padding: 5px;
+    flex-grow: 1;
+}
+
+.baca-selengkapnya {
+    text-align: right;
+    padding: 5px;
+    color: blue;
+    cursor: pointer;
+}

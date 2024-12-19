@@ -1,0 +1,10 @@
+/* Gaya untuk elemen dengan ID "teks" */
+#teks {
+    color: springgreen;              /* Warna teks hijau */
+    text-align: left;          /* Rata kiri */
+    font-family: "Monotype Corsiva", cursive;  /* Jenis huruf Monotype Corsiva */
+    }
+
+body{
+    background-color: blue;
+}

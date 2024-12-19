@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Tambah Data</title>
+</head>
+<body>
+    <h1>Form Tambah Data Kamar</h1>
+    <form method="post" enctype="multipart/form-data">
+        <label>ID Kamar:</label><br />
+        <input type="text" name="id_kamar" required /><br /><br />
+
+        <label>Gambar Ruangan:</label><br />
+        <input type="file" name="gambar_ruangan" accept="image/*" required /><br /><br />
+
+        <label>Jenis Kamar:</label><br />
+        <input type="text" name="jenis_kamar" required /><br /><br />
+
+        <label>Harga:</label><br />
+        <input type="number" name="harga" required /><br /><br />
+
+        <label>Fasilitas:</label><br />
+        <textarea name="fasilitas" rows="4" required></textarea><br /><br />
+
+        <button type="submit">Simpan Data Kamar</button>
+    </form>
+
+    <h1>Form Tambah Data Fasilitas</h1>
+    <form method="post">
+        <label>ID:</label><br />
+        <input type="text" name="id" required /><br /><br />
+
+        <label>Nama Fasilitas:</label><br />
+        <input type="text" name="nama_fasilitas" required /><br /><br />
+
+        <label>Harga Weekend:</label><br />
+        <input type="number" name="harga_weekend" required /><br /><br />
+
+        <label>Harga Weekday:</label><br />
+        <input type="number" name="harga_weekday" required /><br /><br />
+
+        <label>Kuota:</label><br />
+        <input type="number" name="kuota" required /><br /><br />
+
+        <label>Jam Buka:</label><br />
+        <input type="time" name="jam_buka" required /><br /><br />
+
+        <label>Jam Tutup:</label><br />
+        <input type="time" name="jam_tutup" required /><br /><br />
+
+        <button type="submit">Simpan Data Fasilitas</button>
+    </form>
+</body>
+</html>

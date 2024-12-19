@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Booking</title>
+  <script src="../js/jquery-3.7.1.js"></script>
+  <style>
+    .error { color: red; font-size: 0.9em; }
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    }
+
+    form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #3e8e41;
+    }
+
+    /* Additional CSS for better layout and styling */
+    form {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .button-group {
+        display: flex;
+        justify-content: space-between;
+    }
+    #result { margin-top: 20px; padding: 15px; border: 1px solid #ddd; background-color: #f9f9f9; }
+    #result h3 { margin-bottom: 15px; font-size: 1.2em; color: #333; }
+  </style>
+</head>
+<body>
+  <h2>Form Booking Hotel</h2>
+  <form id="bookingForm">
+    <p>
+      <label for="idPemesan">Id Pemesan:</label>
+      <input type="text" id="idPemesan" name="idPemesan">
+      <span id="idPemesanError" class="error"></span>
+    </p>
+    <p>
+      <label for="namaPemesan">Nama Pemesan:</label>
+      <input type="text" id="namaPemesan" name="namaPemesan">
+    </p>
+    <p>
+      <label for="jenisKelamin">Jenis Kelamin:</label>
+      <select id="jenisKelamin" name="jenisKelamin">
+        <option value="Laki-laki">Laki-laki</option>
+        <option value="Perempuan">Perempuan</option>
+      </select>
+    </p>
+    <p>
+      <label for="nomorIdentitas">Nomor Identitas:</label>
+      <input type="text" id="nomorIdentitas" name="nomorIdentitas">
+      <span id="nomorIdentitasError" class="error"></span>
+    </p>
+    <p>
+      <label for="tipeKamar">Tipe Kamar:</label>
+      <select id="tipeKamar" name="tipeKamar">
+        <option value="standar">Standar</option>
+        <option value="deluxe">Deluxe</option>
+        <option value="family">Family</option>
+      </select>
+    </p>
+    <p>
+      <label for="tanggalPesan">Tanggal Pesan:</label>
+      <input type="date" id="tanggalPesan" name="tanggalPesan">
+    </p>
+    <p>
+      <label for="durasi">Durasi Menginap:</label>
+      <input type="text" id="durasi" name="durasi">
+      <span id="durasiError" class="error"></span>
+    </p>
+    <p>
+      <label for="breakfast">Termasuk Breakfast:</label>
+      <input type="checkbox" id="breakfast" name="breakfast"> Ya
+    </p>
+    <p>
+      <button type="button" id="hitungButton">Hitung Total</button>
+    </p>
+    <p>
+      <label for="totalBayar">Total Bayar:</label>
+      <input type="text" id="totalBayar" name="totalBayar" disabled>
+    </p>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    function hitungTotal() {
+      const idPemesan = $("#idPemesan").val();
+      const namaPemesan = $("#namaPemesan").val();
+      const jenisKelamin = $("#jenisKelamin").val();
+      const nomorIdentitas = $("#nomorIdentitas").val();
+      const tipeKamar = $("#tipeKamar").val();
+      const tanggalPesan = $("#tanggalPesan").val();
+      const durasi = $("#durasi").val();
+      const breakfast = $("#breakfast").is(":checked");
+
+      // Validasi
+      let isValid = true;
+
+      // Validasi id pemesan
+      if (!$.isNumeric(idPemesan) || idPemesan.trim() === "") {
+        $("#idPemesanError").text("Id Pemesan harus berupa angka");
+        isValid = false;
+      } else {
+        $("#idPemesanError").text("");
+      }
+
+      // Validasi nomor identitas
+      if (nomorIdentitas.length !== 16) {
+        $("#nomorIdentitasError").text("Nomor Identitas harus 16 digit");
+        isValid = false;
+      } else {
+        $("#nomorIdentitasError").text("");
+      }
+
+      // Validasi durasi
+      if (!$.isNumeric(durasi) || durasi <= 0) {
+        $("#durasiError").text("Durasi Menginap harus berupa angka");
+        isValid = false;
+      } else {
+        $("#durasiError").text("");
+      }
+
+      if (!isValid) {
+        return;
+      }
+
+      // Hitung total harga
+      let hargaPerMalam;
+      switch (tipeKamar) {
+        case "standar":
+          hargaPerMalam = 300000;
+          break;
+        case "deluxe":
+          hargaPerMalam = 700000;
+          break;
+        case "family":
+          hargaPerMalam = 500000;
+          break;
+        default:
+          hargaPerMalam = 0;
+      }
+
+      let totalHarga = hargaPerMalam * durasi;
+      let diskon = 0;
+
+      // Diskon 10% jika menginap lebih dari 3 hari
+      if (durasi > 3) {
+        diskon = 10; // Diskon 10%
+        totalHarga *= 0.9;
+      }
+
+      // Tambahan biaya untuk sarapan
+      if (breakfast) {
+        totalHarga += 80000;
+      }
+
+      // Tampilkan hasil dalam form
+      $("#totalBayar").val(`Rp. ${totalHarga.toLocaleString("id-ID")}`);
+
+      // Tampilkan hasil di div result dengan judul dan informasi diskon
+      const resultHtml = `
+        <h3>Resume Pemesanan</h3>
+        <form>
+          <p><label>Id Pemesan:</label> <input type="text" value="${idPemesan}" disabled></p>
+          <p><label>Nama Pemesan:</label> <input type="text" value="${namaPemesan}" disabled></p>
+          <p><label>Jenis Kelamin:</label> <input type="text" value="${jenisKelamin}" disabled></p>
+          <p><label>Nomor Identitas:</label> <input type="text" value="${nomorIdentitas}" disabled></p>
+          <p><label>Tipe Kamar:</label> <input type="text" value="${tipeKamar}" disabled></p>
+          <p><label>Tanggal Pesan:</label> <input type="text" value="${tanggalPesan}" disabled></p>
+          <p><label>Durasi Menginap:</label> <input type="text" value="${durasi} hari" disabled></p>
+          <p><label>Termasuk Breakfast:</label> <input type="text" value="${breakfast ? "Ya" : "Tidak"}" disabled></p>
+          <p><label>Diskon:</label> <input type="text" value="${diskon > 0 ? diskon + "%" : "Tidak Ada"}" disabled></p>
+          <p><label>Total Bayar:</label> <input type="text" value="Rp. ${totalHarga.toLocaleString("id-ID")}" disabled></p>
+        </form>
+      `;
+
+      $("#result").html(resultHtml);
+    }
+
+    $(document).ready(function () {
+      $("#hitungButton").on("click", function () {
+        hitungTotal();
+      });
+    });
+  </script>
+</body>
+</html>

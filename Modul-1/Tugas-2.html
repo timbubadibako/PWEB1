@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotelku.com</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column; 
+            min-height: 100vh; 
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        nav {
+            background-color: #333; 
+            padding: 10px; 
+        }
+        nav ul {
+            list-style-type: none; 
+            margin: 0; 
+            padding: 0; 
+            display: flex; 
+        }
+        nav ul li {
+            position: relative; 
+        }
+        nav ul li a {
+            color: white; 
+            text-decoration: none; 
+            padding: 10px 20px; 
+            display: block; 
+        }
+        nav ul li:hover > a {
+            background-color: #575757; 
+        }
+        nav ul li ul {
+            display: none; 
+            position: absolute; 
+            left: 100%; 
+            top: 0; 
+            background-color: #444; 
+            padding: 10px; 
+            border-radius: 5px; 
+            z-index: 1000; 
+            margin-top: 10px; 
+        }
+        nav ul li:hover > ul {
+            display: block; 
+        }
+        nav ul li ul li {
+            white-space: nowrap; 
+        }
+        nav ul li ul li a {
+            padding: 8px 15px; 
+        }
+        .container {
+            flex: 1; 
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+        }
+        .leftbar {
+            width: 25%; 
+            padding: 10px;
+            background-color: #f8f9fa;
+        }
+        .content {
+            width: 75%; 
+            padding-left: 20px; 
+        }
+        .img-placeholder {
+            background-color: #ddd;
+            width: 100%;
+            height: 200px; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 0px;
+            overflow: hidden; 
+        }
+        .img-placeholder img {
+            width: 100%; 
+            height: auto; 
+        }
+        .video-placeholder {
+            margin-bottom: 10px;
+            height: 200px;
+        }
+        iframe {
+            width: 100%;
+            height: 188px;
+            border: none;
+        }
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 10px; 
+        }
+        footer {
+            background-color: #343a40; 
+            color: white; 
+            text-align: center; 
+            padding: 15px; 
+            margin-top: auto; 
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Hotelku.com</h1>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#Src/Kamar">Kamar</a></li>
+        <li>
+            <a href="#fasilitas">Fasilitas</a>
+            <ul class="dropdown">
+                <li><a href="#petualangan-alam">Petualangan Alam</a></li>
+                <li>
+                    <a href="#kolam-renang">Kolam Renang</a>
+                    <ul class="dropdown">
+                        <li><a href="#kolam-renang-dewasa">Kolam Renang Dewasa</a></li>
+                        <li><a href="#kolam-renang-anak">Kolam Renang Anak</a></li>
+                        <li>
+                            <a href="#jenis-kolam-anak-dewasa">Jenis Kolam</a>
+                            <ul class="dropdown">
+                                <li><a href="#kolam-reguler">Reguler</a></li>
+                                <li><a href="#kolam-premium">Premium</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="#sumber-air-panas">Sumber Air Panas</a></li>
+                <li><a href="#pusat-kebugaran">Pusat Kebugaran</a></li>
+                <li><a href="#ruang-rapat">Ruang Rapat</a></li>
+            </ul>
+        </li>
+        <li><a href="#pesan-sekarang">Pesan Sekarang</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    <div class="leftbar">
+        <h3>Video Kami</h3>
+        <div class="video-placeholder">
+            <iframe src="https://www.youtube.com/embed/tZ2yiDmT_g8?si=J6sz7dHGbk0jJU-A" allowfullscreen></iframe>
+        </div>
+        <div class="video-placeholder">
+            <iframe src="https://www.youtube.com/embed/0VIhza1IyE0?si=2EcLTcJg9LEjxDoZ" allowfullscreen></iframe>
+        </div>
+        <div class="video-placeholder">
+            <iframe src="https://www.youtube.com/embed/u9vK5utTcxE?si=vmZXCv_LM6XbMBDK" allowfullscreen></iframe>
+        </div>
+    </div>
+    <div class="content">
+        <h3>Foto Jenis Src/Kamar</h3>
+        <div class="photo-grid">
+            <div class="img-placeholder">
+                <img src="Src/Kamar-1.jpeg" alt="Foto Src/Kamar 1">
+            </div>
+            <div class="img-placeholder">
+                <img src="Src/Kamar-2.jpeg" alt="Foto Src/Kamar 2">
+            </div>
+            <div class="img-placeholder">
+                <img src="Src/Kamar-3.jpeg" alt="Foto Src/Kamar 3">
+            </div>
+            <div class="img-placeholder">
+                <img src="Src/Kamar-4.jpeg" alt="Foto Src/Kamar 4">
+            </div>
+            <div class="img-placeholder">
+                <img src="Src/Kamar-5.jpeg" alt="Foto Src/Kamar 5">
+            </div>
+            <div class="img-placeholder">
+                <img src="Src/Kamar-6.jpeg" alt="Foto Src/Kamar 6">
+            </div>
+            <div class="img-placeholder">
+                <img src="Src/Kamar-7.jpeg" alt="Foto Src/Kamar 7">
+            </div>
+            <div class="img-placeholder">
+                <img src="Src/Kamar-8.jpeg" alt="Foto Src/Kamar 8">
+            </div>
+            <div class="img-placeholder">
+                <img src="Src/Kamar-9.jpeg" alt="Foto Src/Kamar 9">
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Hotelku.com - Syifa Pajril Yaum</p>
+</footer>
+
+</body>
+</html>
