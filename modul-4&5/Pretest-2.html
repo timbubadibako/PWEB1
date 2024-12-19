@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Validasi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .login-form {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        .message {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-form">
+        <h2>Login</h2>
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" placeholder="Masukkan Username"><br><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" placeholder="Masukkan Password"><br><br>
+        <button onclick="validateLogin()">Login</button>
+        <p class="message" id="message"></p>
+    </div>
+
+    <script>
+        function validateLogin() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var message = document.getElementById("message");
+
+            // Cek apakah input kosong
+            if (username === "" || password === "") {
+                message.textContent = "Username dan Passwordtidak boleh kosong!";
+                message.style.color = "red";
+                return;
+            }
+
+            // Validasi username dan password
+            if (username === "admin" && password === "admin1234") {
+                message.textContent = "Login Berhasil!";
+                message.style.color = "green";
+            } else {
+                message.textContent = "Login Gagal. Username atau Password salah.";
+                message.style.color = "red";
+            }
+        }
+    </script>
+
+</body>
+</html>

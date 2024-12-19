@@ -1,0 +1,35 @@
+<!DOCTYPE html>  
+<html lang="id"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>POSTTEST Perhitungan Gaji</title> 
+    <link rel="stylesheet" href="Style-posttest1.css">
+    <script src="Script-posttest1.js"> </script> 
+</head> 
+<body> 
+    <form name="form1"> 
+    <h2>PERHITUNGAN GAJI</h2> 
+        <label for="gol">Golongan:</label> 
+        <select name="gol" id="gol"> 
+            <option value="I">I</option> 
+            <option value="II">II</option> 
+            <option value="III">III</option> 
+        </select> 
+        <label for="anak">Jumlah Anak:</label> 
+        <input type="text" name="anak" id="anak" size="10" maxlength="10" placeholder="Masukkan jumlah anak"> 
+        <div style="display: flex; justify-content: space-between;"> 
+            <input type="button" name="hitung" value="Hitung" onClick="hit()"> 
+            <input type="reset" name="batal" value="Batal"> 
+        </div> 
+        <label>Gaji Pokok:</label> 
+        <input type="text" name="gapok" id="gapok" readonly placeholder="Gaji Pokok"> 
+        
+        <label>Tunjangan:</label> 
+        <input type="text" name="tunjangan" id="tunjangan" readonly placeholder="Tunjangan"> 
+        
+        <label>Gaji Bersih:</label> 
+        <input type="text" name="gaji" id="gaji" readonly placeholder="Gaji Bersih"> 
+    </form> 
+</body> 
+</html> 
